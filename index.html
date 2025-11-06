@@ -180,7 +180,7 @@
             }
         }
 
-        /* Floating Data Streams */
+        /* Floating Data Streams - SLOWER ANIMATION */
         .data-stream {
             position: absolute;
             color: rgba(0, 240, 240, 0.4);
@@ -237,7 +237,7 @@
             }
         }
 
-        /* Binary Rain */
+        /* Binary Rain - SLOWER ANIMATION */
         .binary-rain {
             position: absolute;
             color: rgba(0, 240, 240, 0.3);
@@ -1832,14 +1832,20 @@
                 effectsContainer.appendChild(connection);
             }
             
-            // Create Floating Data Streams
-            const dataChars = 'MIRZA SBT DEFI DAO NFT WEB3 BLOCKCHAIN CRYPTO';
+            // Create Floating Data Streams with MIRZA-related terms
+            const mirzaTerms = [
+                'MIRZA CHAIN', 'MIRZA ECOSYSTEM', 'MRZ COIN', 'MIRZA ON SEPOLIA',
+                'MIRZA SBT', 'MIRZA BLOCKCHAIN', 'MIRZA NFT', 'SBT NFT',
+                'MRZ DEFI', 'MIRZA DeFi', 'MIRZA DEFI'
+            ];
+            
             for (let i = 0; i < 25; i++) {
                 const stream = document.createElement('div');
                 stream.className = 'data-stream';
-                stream.textContent = dataChars.split(' ')[Math.floor(Math.random() * dataChars.split(' ').length)];
+                stream.textContent = mirzaTerms[Math.floor(Math.random() * mirzaTerms.length)];
                 stream.style.left = `${Math.random() * 100}%`;
-                stream.style.animationDuration = `${Math.random() * 4 + 3}s`;
+                // SLOWER ANIMATION - increased from 4-7s to 8-12s
+                stream.style.animationDuration = `${Math.random() * 4 + 8}s`;
                 stream.style.animationDelay = `${Math.random() * 6}s`;
                 effectsContainer.appendChild(stream);
             }
@@ -1855,13 +1861,14 @@
                 effectsContainer.appendChild(vortex);
             }
             
-            // Create Binary Rain
+            // Create Binary Rain - SLOWER ANIMATION
             for (let i = 0; i < 35; i++) {
                 const binary = document.createElement('div');
                 binary.className = 'binary-rain';
                 binary.textContent = Math.random() > 0.5 ? '1' : '0';
                 binary.style.left = `${Math.random() * 100}%`;
-                binary.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                // SLOWER ANIMATION - increased from 3-5s to 6-9s
+                binary.style.animationDuration = `${Math.random() * 3 + 6}s`;
                 binary.style.animationDelay = `${Math.random() * 5}s`;
                 effectsContainer.appendChild(binary);
             }
