@@ -35,116 +35,6 @@
             position: relative;
         }
 
-        /* Celebration Effects */
-        .celebration-effects {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Bubbles */
-        .bubble {
-            position: absolute;
-            bottom: -100px;
-            background: rgba(0, 240, 240, 0.1);
-            border: 1px solid rgba(0, 240, 240, 0.3);
-            border-radius: 50%;
-            animation: floatUp linear infinite;
-            opacity: 0.7;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(0.5);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-100vh) scale(1.2);
-                opacity: 0;
-            }
-        }
-
-        /* Confetti */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 20px;
-            background: var(--accent);
-            opacity: 0.8;
-            animation: confettiFall linear infinite;
-        }
-
-        .confetti:nth-child(odd) {
-            background: #ff6b6b;
-        }
-
-        .confetti:nth-child(even) {
-            background: #4ecdc4;
-        }
-
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Floating Particles */
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: particleFloat ease-in-out infinite;
-            opacity: 0.6;
-        }
-
-        @keyframes particleFloat {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        /* Sparkles */
-        .sparkle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: #fff;
-            border-radius: 50%;
-            animation: sparkleTwinkle 2s ease-in-out infinite;
-            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
-        }
-
-        @keyframes sparkleTwinkle {
-            0%, 100% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
-        }
-
         /* Side Menu Bar */
         .side-menu-container {
             position: fixed;
@@ -638,6 +528,31 @@
             border-bottom: none;
         }
 
+        .wallet-action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .wallet-action-button {
+            flex: 1;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+            background: rgba(0, 240, 240, 0.1);
+            color: var(--accent);
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .wallet-action-button:hover {
+            background: rgba(0, 240, 240, 0.2);
+            transform: translateY(-2px);
+        }
+
         /* NFT Display Section */
         .nft-display-section {
             background: rgba(0, 240, 240, 0.05);
@@ -864,6 +779,10 @@
                 font-size: 0.7rem;
                 padding: 0.2rem 0.6rem;
             }
+            
+            .wallet-action-buttons {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 576px) {
@@ -961,9 +880,6 @@
     </style>
 </head>
 <body>
-    <!-- Celebration Effects -->
-    <div class="celebration-effects" id="celebrationEffects"></div>
-
     <!-- Side Menu Bar -->
     <div class="side-menu-container" id="sideMenu">
         <div class="menu-header">
@@ -1052,8 +968,8 @@
             </h2>
             
             <p style="text-align: center; color: var(--text); font-size: 1.2rem; margin-bottom: 3rem; line-height: 1.6;">
-                Mint your unique Soulbound Token (SBT) to access the full <span class="mirza-text">MIRZA ECOSYSTEM</span><br>
-                Follow these simple steps to get started
+                <strong>Mint your unique Soulbound Token (SBT) to access the full <span style="color: #00f0f0;">MIRZA ECOSYSTEM</span></strong><br>
+                <strong>Follow these simple steps to get started</strong>
             </p>
 
             <!-- Wallet Connection Info -->
@@ -1069,6 +985,10 @@
                 <div class="info-row">
                     <div class="small muted">Status:</div>
                     <div class="small status-success" id="connectionStatus">Connected</div>
+                </div>
+                <div class="wallet-action-buttons">
+                    <button class="wallet-action-button" id="addTokenBtn">Add MIRZA to Wallet</button>
+                    <button class="wallet-action-button" id="disconnectBtn">Disconnect Wallet</button>
                 </div>
             </div>
             
@@ -1189,55 +1109,6 @@
     </footer>
 
     <script>
-        // Create celebration effects
-        function createCelebrationEffects() {
-            const effectsContainer = document.getElementById('celebrationEffects');
-            
-            // Create bubbles
-            for (let i = 0; i < 15; i++) {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                const size = Math.random() * 60 + 20;
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                bubble.style.left = `${Math.random() * 100}%`;
-                bubble.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                bubble.style.animationDelay = `${Math.random() * 5}s`;
-                effectsContainer.appendChild(bubble);
-            }
-            
-            // Create confetti
-            for (let i = 0; i < 20; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = `${Math.random() * 100}%`;
-                confetti.style.animationDuration = `${Math.random() * 5 + 3}s`;
-                confetti.style.animationDelay = `${Math.random() * 2}s`;
-                effectsContainer.appendChild(confetti);
-            }
-            
-            // Create particles
-            for (let i = 0; i < 25; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                particle.style.animationDelay = `${Math.random() * 2}s`;
-                effectsContainer.appendChild(particle);
-            }
-            
-            // Create sparkles
-            for (let i = 0; i < 30; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = `${Math.random() * 100}%`;
-                sparkle.style.top = `${Math.random() * 100}%`;
-                sparkle.style.animationDelay = `${Math.random() * 3}s`;
-                effectsContainer.appendChild(sparkle);
-            }
-        }
-
         // Mobile menu toggle
         function setupMobileMenu() {
             const menuToggle = document.getElementById('menuToggle');
@@ -1324,6 +1195,8 @@
         const faucetBtn = document.getElementById("faucetBtn");
         const approveBtn = document.getElementById("approveBtn");
         const mintBtn = document.getElementById("mintBtn");
+        const addTokenBtn = document.getElementById("addTokenBtn");
+        const disconnectBtn = document.getElementById("disconnectBtn");
         
         const walletStatus = document.getElementById("walletStatus");
         const faucetStatus = document.getElementById("faucetStatus");
@@ -1378,6 +1251,38 @@
             } else {
                 document.body.classList.remove('loading');
                 isProcessing = false;
+            }
+        }
+
+        /* ---------- Add Token to Wallet ---------- */
+        async function addTokenToWallet() {
+            if (!window.ethereum) {
+                alert("Please install MetaMask to add tokens to your wallet.");
+                return;
+            }
+
+            try {
+                const wasAdded = await window.ethereum.request({
+                    method: 'wallet_watchAsset',
+                    params: {
+                        type: 'ERC20',
+                        options: {
+                            address: MIRZA_TOKEN,
+                            symbol: 'MIRZA',
+                            decimals: 18,
+                            image: 'https://i.ibb.co/zH0cmJ4S/mirzalogo.png',
+                        },
+                    },
+                });
+
+                if (wasAdded) {
+                    alert('MIRZA token successfully added to your wallet!');
+                } else {
+                    alert('MIRZA token was not added to your wallet.');
+                }
+            } catch (error) {
+                console.error("Error adding token to wallet:", error);
+                alert('There was an error adding the token to your wallet.');
             }
         }
 
@@ -1887,14 +1792,15 @@
         faucetBtn.addEventListener("click", claimFaucet);
         approveBtn.addEventListener("click", approveTokens);
         mintBtn.addEventListener("click", mintSBT);
+        addTokenBtn.addEventListener("click", addTokenToWallet);
+        disconnectBtn.addEventListener("click", disconnectWallet);
 
         /* ---------- initial state ---------- */
         disableAllActionButtons();
         setStatus(walletStatus, "PLEASE CONNECT YOUR WALLET TO INTERACT");
 
-        // Initialize celebration effects and mobile menu
+        // Initialize mobile menu
         document.addEventListener('DOMContentLoaded', function() {
-            createCelebrationEffects();
             setupMobileMenu();
         });
 
