@@ -31,8 +31,8 @@
             position: relative;
         }
 
-        /* Celebration Effects */
-        .celebration-effects {
+        /* New Ecosystem Effects */
+        .ecosystem-effects {
             position: fixed;
             top: 0;
             left: 0;
@@ -40,104 +40,180 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
+            overflow: hidden;
         }
 
-        /* Bubbles */
-        .bubble {
+        /* Network Connections */
+        .network-connection {
             position: absolute;
-            bottom: -100px;
-            background: rgba(0, 240, 240, 0.1);
-            border: 1px solid rgba(0, 240, 240, 0.3);
-            border-radius: 50%;
-            animation: floatUp linear infinite;
-            opacity: 0.7;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(0.5);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-100vh) scale(1.2);
-                opacity: 0;
-            }
-        }
-
-        /* Confetti */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 20px;
-            background: var(--accent);
-            opacity: 0.8;
-            animation: confettiFall linear infinite;
-        }
-
-        .confetti:nth-child(odd) {
-            background: #ff6b6b;
-        }
-
-        .confetti:nth-child(even) {
-            background: #4ecdc4;
-        }
-
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Floating Particles */
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 2px;
+            height: 2px;
             background: var(--accent);
             border-radius: 50%;
-            animation: particleFloat ease-in-out infinite;
-            opacity: 0.6;
+            animation: connectionPulse 4s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(0, 240, 240, 0.6);
         }
 
-        @keyframes particleFloat {
+        @keyframes connectionPulse {
             0%, 100% {
-                transform: translateY(0px);
+                opacity: 0.3;
+                transform: scale(1);
             }
             50% {
-                transform: translateY(-20px);
+                opacity: 1;
+                transform: scale(1.5);
             }
         }
 
-        /* Sparkles */
-        .sparkle {
+        /* Data Flow Lines */
+        .data-flow {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: dataFlow 8s linear infinite;
+            filter: blur(0.5px);
+        }
+
+        @keyframes dataFlow {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        /* Ecosystem Nodes */
+        .ecosystem-node {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: nodeGlow 3s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(0, 240, 240, 0.8);
+        }
+
+        @keyframes nodeGlow {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 1;
+            }
+        }
+
+        /* Digital Particles */
+        .digital-particle {
             position: absolute;
             width: 3px;
             height: 3px;
-            background: #fff;
+            background: rgba(0, 240, 240, 0.7);
             border-radius: 50%;
-            animation: sparkleTwinkle 2s ease-in-out infinite;
-            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: particleOrbit 12s linear infinite;
         }
 
-        @keyframes sparkleTwinkle {
-            0%, 100% {
-                opacity: 0;
-                transform: scale(0.5);
+        @keyframes particleOrbit {
+            0% {
+                transform: rotate(0deg) translateX(20px) rotate(0deg);
             }
-            50% {
+            100% {
+                transform: rotate(360deg) translateX(20px) rotate(-360deg);
+            }
+        }
+
+        /* Blockchain Blocks */
+        .blockchain-block {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: transparent;
+            border: 1px solid var(--accent);
+            animation: blockFloat 6s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(0, 240, 240, 0.5);
+        }
+
+        @keyframes blockFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-15px) rotate(120deg);
+            }
+            66% {
+                transform: translateY(10px) rotate(240deg);
+            }
+        }
+
+        /* Smart Contract Waves */
+        .contract-wave {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgba(0, 240, 240, 0.3);
+            border-radius: 50%;
+            animation: waveExpand 4s ease-out infinite;
+        }
+
+        @keyframes waveExpand {
+            0% {
+                transform: scale(0.1);
                 opacity: 1;
-                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* DeFi Streams */
+        .defi-stream {
+            position: absolute;
+            color: rgba(0, 240, 240, 0.4);
+            font-family: 'Orbitron', monospace;
+            font-size: 11px;
+            animation: streamFlow linear infinite;
+            text-shadow: 0 0 5px rgba(0, 240, 240, 0.6);
+        }
+
+        @keyframes streamFlow {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Governance Rings */
+        .governance-ring {
+            position: absolute;
+            border: 1px solid rgba(0, 240, 240, 0.2);
+            border-radius: 50%;
+            animation: ringRotate 20s linear infinite;
+        }
+
+        @keyframes ringRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
             }
         }
 
@@ -475,6 +551,29 @@
             color: var(--accent);
         }
 
+        /* SBT Identity ইমেজ স্টাইল */
+        .sbt-identity-img {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 20px rgba(0, 240, 240, 0.5);
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+
+        .sbt-identity-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* DeFi Platform ইমোজি কালারবিহীন */
+        .ecosystem-card:nth-child(2) .ecosystem-icon {
+            filter: grayscale(1) brightness(10);
+        }
+
         .nft-logo {
             width: 60px;
             height: 60px;
@@ -777,8 +876,8 @@
     </style>
 </head>
 <body>
-    <!-- Celebration Effects -->
-    <div class="celebration-effects" id="celebrationEffects"></div>
+    <!-- New Ecosystem Effects -->
+    <div class="ecosystem-effects" id="ecosystemEffects"></div>
 
     <!-- Side Menu Bar -->
     <div class="side-menu-container" id="sideMenu">
@@ -877,7 +976,9 @@
         <div class="ecosystem-grid">
             <!-- SBT Identity -->
             <div class="ecosystem-card">
-                <div class="ecosystem-icon">🆔</div>
+                <div class="sbt-identity-img">
+                    <img src="https://i.ibb.co/HfBDhr5P/1.jpg" alt="SBT Identity">
+                </div>
                 <h3 class="ecosystem-card-title">SBT Identity</h3>
                 <p>Unique Soulbound Tokens for digital identity verification and ecosystem access.</p>
                 <a href="mint.html" class="mint-button">
@@ -987,52 +1088,98 @@
     </footer>
 
     <script>
-        // Create celebration effects
-        function createCelebrationEffects() {
-            const effectsContainer = document.getElementById('celebrationEffects');
+        // Create ecosystem effects
+        function createEcosystemEffects() {
+            const effectsContainer = document.getElementById('ecosystemEffects');
             
-            // Create bubbles
-            for (let i = 0; i < 15; i++) {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                const size = Math.random() * 60 + 20;
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                bubble.style.left = `${Math.random() * 100}%`;
-                bubble.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                bubble.style.animationDelay = `${Math.random() * 5}s`;
-                effectsContainer.appendChild(bubble);
+            // Create Network Connections
+            for (let i = 0; i < 40; i++) {
+                const connection = document.createElement('div');
+                connection.className = 'network-connection';
+                connection.style.left = `${Math.random() * 100}%`;
+                connection.style.top = `${Math.random() * 100}%`;
+                connection.style.animationDelay = `${Math.random() * 4}s`;
+                effectsContainer.appendChild(connection);
             }
             
-            // Create confetti
-            for (let i = 0; i < 20; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = `${Math.random() * 100}%`;
-                confetti.style.animationDuration = `${Math.random() * 5 + 3}s`;
-                confetti.style.animationDelay = `${Math.random() * 2}s`;
-                effectsContainer.appendChild(confetti);
+            // Create Data Flow Lines
+            for (let i = 0; i < 12; i++) {
+                const flow = document.createElement('div');
+                flow.className = 'data-flow';
+                flow.style.top = `${Math.random() * 100}%`;
+                flow.style.width = `${Math.random() * 300 + 150}px`;
+                flow.style.animationDelay = `${Math.random() * 8}s`;
+                flow.style.animationDuration = `${Math.random() * 6 + 8}s`;
+                effectsContainer.appendChild(flow);
             }
             
-            // Create particles
+            // Create Ecosystem Nodes
+            for (let i = 0; i < 30; i++) {
+                const node = document.createElement('div');
+                node.className = 'ecosystem-node';
+                node.style.left = `${Math.random() * 100}%`;
+                node.style.top = `${Math.random() * 100}%`;
+                node.style.animationDelay = `${Math.random() * 3}s`;
+                effectsContainer.appendChild(node);
+            }
+            
+            // Create Digital Particles
             for (let i = 0; i < 25; i++) {
                 const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                particle.style.animationDelay = `${Math.random() * 2}s`;
+                particle.className = 'digital-particle';
+                const centerX = Math.random() * 100;
+                const centerY = Math.random() * 100;
+                particle.style.left = `${centerX}%`;
+                particle.style.top = `${centerY}%`;
+                particle.style.animationDuration = `${Math.random() * 8 + 12}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
                 effectsContainer.appendChild(particle);
             }
             
-            // Create sparkles
-            for (let i = 0; i < 30; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = `${Math.random() * 100}%`;
-                sparkle.style.top = `${Math.random() * 100}%`;
-                sparkle.style.animationDelay = `${Math.random() * 3}s`;
-                effectsContainer.appendChild(sparkle);
+            // Create Blockchain Blocks
+            for (let i = 0; i < 20; i++) {
+                const block = document.createElement('div');
+                block.className = 'blockchain-block';
+                block.style.left = `${Math.random() * 100}%`;
+                block.style.top = `${Math.random() * 100}%`;
+                block.style.animationDelay = `${Math.random() * 6}s`;
+                block.style.animationDuration = `${Math.random() * 4 + 6}s`;
+                effectsContainer.appendChild(block);
+            }
+            
+            // Create Smart Contract Waves
+            for (let i = 0; i < 8; i++) {
+                const wave = document.createElement('div');
+                wave.className = 'contract-wave';
+                wave.style.left = `${Math.random() * 100}%`;
+                wave.style.top = `${Math.random() * 100}%`;
+                wave.style.animationDelay = `${Math.random() * 4}s`;
+                effectsContainer.appendChild(wave);
+            }
+            
+            // Create DeFi Streams
+            const defiChars = '💰💎📈📊💹MIRZADeFiSBT';
+            for (let i = 0; i < 25; i++) {
+                const stream = document.createElement('div');
+                stream.className = 'defi-stream';
+                stream.textContent = defiChars.charAt(Math.floor(Math.random() * defiChars.length));
+                stream.style.left = `${Math.random() * 100}%`;
+                stream.style.animationDuration = `${Math.random() * 4 + 3}s`;
+                stream.style.animationDelay = `${Math.random() * 6}s`;
+                effectsContainer.appendChild(stream);
+            }
+            
+            // Create Governance Rings
+            for (let i = 0; i < 6; i++) {
+                const ring = document.createElement('div');
+                ring.className = 'governance-ring';
+                const size = Math.random() * 400 + 200;
+                ring.style.width = `${size}px`;
+                ring.style.height = `${size}px`;
+                ring.style.left = `${Math.random() * 100}%`;
+                ring.style.top = `${Math.random() * 100}%`;
+                ring.style.animationDuration = `${Math.random() * 15 + 20}s`;
+                effectsContainer.appendChild(ring);
             }
         }
 
@@ -1084,8 +1231,8 @@
                 }
             });
 
-            // Initialize celebration effects and mobile menu
-            createCelebrationEffects();
+            // Initialize ecosystem effects and mobile menu
+            createEcosystemEffects();
             setupMobileMenu();
         });
     </script>
