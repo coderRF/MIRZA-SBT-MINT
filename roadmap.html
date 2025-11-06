@@ -31,8 +31,8 @@
             position: relative;
         }
 
-        /* New Ecosystem Effects */
-        .ecosystem-effects {
+        /* Sophisticated Roadmap Effects */
+        .roadmap-effects {
             position: fixed;
             top: 0;
             left: 0;
@@ -43,163 +43,255 @@
             overflow: hidden;
         }
 
-        /* Network Nodes */
-        .network-node {
+        /* Timeline Energy Flow */
+        .timeline-energy {
             position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(0, 240, 240, 0.8);
-            animation: nodePulse 4s ease-in-out infinite;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(to bottom, 
+                transparent 0%, 
+                var(--accent) 20%, 
+                #0080ff 50%, 
+                var(--accent) 80%, 
+                transparent 100%);
+            transform: translateX(-50%);
+            animation: timelinePulse 4s ease-in-out infinite;
+            box-shadow: 
+                0 0 20px rgba(0, 240, 240, 0.6),
+                0 0 40px rgba(0, 240, 240, 0.4),
+                0 0 60px rgba(0, 240, 240, 0.2);
         }
 
-        @keyframes nodePulse {
+        @keyframes timelinePulse {
             0%, 100% {
-                transform: scale(1);
                 opacity: 0.7;
+                filter: hue-rotate(0deg);
             }
             50% {
-                transform: scale(1.5);
                 opacity: 1;
+                filter: hue-rotate(45deg);
             }
         }
 
-        /* Data Streams */
-        .data-stream {
+        /* Phase Energy Nodes */
+        .phase-node {
             position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            animation: dataFlow 6s linear infinite;
-            filter: blur(1px);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, var(--accent), #0080ff);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 
+                0 0 25px rgba(0, 240, 240, 0.8),
+                0 0 50px rgba(0, 240, 240, 0.6),
+                0 0 75px rgba(0, 240, 240, 0.4);
+            animation: nodeOrbit 6s ease-in-out infinite;
+            z-index: 2;
         }
 
-        @keyframes dataFlow {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
+        @keyframes nodeOrbit {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 
+                    0 0 25px rgba(0, 240, 240, 0.8),
+                    0 0 50px rgba(0, 240, 240, 0.6);
             }
             50% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-        }
-
-        /* Orbital Rings */
-        .orbital-ring {
-            position: absolute;
-            border: 1px solid rgba(0, 240, 240, 0.3);
-            border-radius: 50%;
-            animation: orbitSpin 20s linear infinite;
-        }
-
-        @keyframes orbitSpin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
+                transform: translateX(-50%) scale(1.3);
+                box-shadow: 
+                    0 0 40px rgba(0, 240, 240, 1),
+                    0 0 80px rgba(0, 240, 240, 0.8),
+                    0 0 120px rgba(0, 240, 240, 0.4);
             }
         }
 
-        /* Quantum Particles */
-        .quantum-particle {
+        /* Progress Particles */
+        .progress-particle {
             position: absolute;
             width: 4px;
             height: 4px;
-            background: rgba(0, 240, 240, 0.8);
-            border-radius: 50%;
-            animation: quantumMove 8s ease-in-out infinite;
-            box-shadow: 0 0 10px rgba(0, 240, 240, 0.6);
-        }
-
-        @keyframes quantumMove {
-            0%, 100% {
-                transform: translate(0, 0);
-            }
-            25% {
-                transform: translate(40px, -20px);
-            }
-            50% {
-                transform: translate(-30px, 30px);
-            }
-            75% {
-                transform: translate(20px, 40px);
-            }
-        }
-
-        /* Ecosystem Connections */
-        .ecosystem-connection {
-            position: absolute;
-            width: 2px;
-            height: 2px;
             background: var(--accent);
             border-radius: 50%;
-            animation: connectionGlow 3s ease-in-out infinite;
+            left: 50%;
+            animation: progressFlow linear infinite;
+            box-shadow: 0 0 10px rgba(0, 240, 240, 0.8);
         }
 
-        @keyframes connectionGlow {
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.5);
-            }
-        }
-
-        /* Digital Rain Effect */
-        .digital-rain {
-            position: absolute;
-            color: rgba(0, 240, 240, 0.4);
-            font-family: 'Orbitron', monospace;
-            font-size: 12px;
-            animation: rainFall linear infinite;
-            text-shadow: 0 0 5px rgba(0, 240, 240, 0.6);
-        }
-
-        @keyframes rainFall {
+        @keyframes progressFlow {
             0% {
-                transform: translateY(-100px);
+                transform: translate(-50%, -100px);
                 opacity: 0;
             }
             10% {
                 opacity: 1;
             }
             90% {
-                opacity: 0.7;
+                opacity: 0.8;
             }
             100% {
-                transform: translateY(100vh);
+                transform: translate(-50%, 100vh);
                 opacity: 0;
             }
         }
 
-        /* Energy Waves */
-        .energy-wave {
+        /* Milestone Connections */
+        .milestone-connection {
             position: absolute;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 240, 240, 0.5), transparent);
-            animation: waveMove 8s linear infinite;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: milestoneGlow 3s ease-in-out infinite;
             filter: blur(1px);
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        @keyframes waveMove {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
+        @keyframes milestoneGlow {
+            0%, 100% {
+                opacity: 0.3;
+                width: 100px;
             }
             50% {
-                opacity: 0.6;
+                opacity: 1;
+                width: 200px;
+            }
+        }
+
+        /* Future Projection Rays */
+        .future-ray {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+            animation: rayScan 8s linear infinite;
+            left: 50%;
+            transform: translateX(-50%) rotate(0deg);
+            transform-origin: bottom center;
+        }
+
+        @keyframes rayScan {
+            0% {
+                transform: translateX(-50%) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            30% {
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateX(-50%) rotate(180deg);
+                opacity: 1;
+            }
+            70% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 1;
             }
             100% {
-                transform: translateX(100%);
+                transform: translateX(-50%) rotate(360deg);
                 opacity: 0;
+            }
+        }
+
+        /* Quantum Progress Dots */
+        .quantum-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(0, 240, 240, 0.8);
+            border-radius: 50%;
+            animation: quantumJump 4s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(0, 240, 240, 0.6);
+        }
+
+        @keyframes quantumJump {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translateY(-20px) scale(1.2);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(0) scale(1);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(20px) scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Achievement Sparks */
+        .achievement-spark {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkFlash 2s ease-in-out infinite;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes sparkFlash {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Growth Rings */
+        .growth-ring {
+            position: absolute;
+            border: 1px solid rgba(0, 240, 240, 0.3);
+            border-radius: 50%;
+            animation: ringExpand 6s ease-out infinite;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes ringExpand {
+            0% {
+                transform: translateX(-50%) scale(0.1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-50%) scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Timeline Markers */
+        .timeline-marker {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: markerPulse 2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0, 240, 240, 0.6);
+        }
+
+        @keyframes markerPulse {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateX(-50%) scale(1.5);
+                opacity: 1;
             }
         }
 
@@ -873,8 +965,8 @@
     </style>
 </head>
 <body>
-    <!-- New Ecosystem Effects -->
-    <div class="ecosystem-effects" id="ecosystemEffects"></div>
+    <!-- Sophisticated Roadmap Effects -->
+    <div class="roadmap-effects" id="roadmapEffects"></div>
 
     <!-- Side Menu Bar -->
     <div class="side-menu-container" id="sideMenu">
@@ -1078,85 +1170,89 @@
     </footer>
 
     <script>
-        // Create ecosystem effects
-        function createEcosystemEffects() {
-            const effectsContainer = document.getElementById('ecosystemEffects');
+        // Create sophisticated roadmap effects
+        function createRoadmapEffects() {
+            const effectsContainer = document.getElementById('roadmapEffects');
             
-            // Create Network Nodes
-            for (let i = 0; i < 25; i++) {
+            // Create Timeline Energy Flow
+            const timelineEnergy = document.createElement('div');
+            timelineEnergy.className = 'timeline-energy';
+            effectsContainer.appendChild(timelineEnergy);
+            
+            // Create Phase Energy Nodes
+            const phasePositions = [20, 40, 60, 80]; // Percentage positions for phases
+            phasePositions.forEach(position => {
                 const node = document.createElement('div');
-                node.className = 'network-node';
-                node.style.left = `${Math.random() * 100}%`;
-                node.style.top = `${Math.random() * 100}%`;
-                node.style.animationDelay = `${Math.random() * 4}s`;
+                node.className = 'phase-node';
+                node.style.top = `${position}%`;
+                node.style.animationDelay = `${Math.random() * 2}s`;
                 effectsContainer.appendChild(node);
-            }
+            });
             
-            // Create Data Streams
-            for (let i = 0; i < 8; i++) {
-                const stream = document.createElement('div');
-                stream.className = 'data-stream';
-                stream.style.top = `${Math.random() * 100}%`;
-                stream.style.width = `${Math.random() * 200 + 100}px`;
-                stream.style.animationDelay = `${Math.random() * 6}s`;
-                stream.style.animationDuration = `${Math.random() * 4 + 6}s`;
-                effectsContainer.appendChild(stream);
-            }
-            
-            // Create Orbital Rings
-            for (let i = 0; i < 6; i++) {
-                const ring = document.createElement('div');
-                ring.className = 'orbital-ring';
-                const size = Math.random() * 300 + 200;
-                ring.style.width = `${size}px`;
-                ring.style.height = `${size}px`;
-                ring.style.left = `${Math.random() * 100}%`;
-                ring.style.top = `${Math.random() * 100}%`;
-                ring.style.animationDuration = `${Math.random() * 10 + 20}s`;
-                effectsContainer.appendChild(ring);
-            }
-            
-            // Create Quantum Particles
-            for (let i = 0; i < 35; i++) {
+            // Create Progress Particles
+            for (let i = 0; i < 25; i++) {
                 const particle = document.createElement('div');
-                particle.className = 'quantum-particle';
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animationDelay = `${Math.random() * 8}s`;
-                particle.style.animationDuration = `${Math.random() * 4 + 8}s`;
+                particle.className = 'progress-particle';
+                particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
                 effectsContainer.appendChild(particle);
             }
             
-            // Create Ecosystem Connections
-            for (let i = 0; i < 50; i++) {
+            // Create Milestone Connections
+            for (let i = 0; i < 8; i++) {
                 const connection = document.createElement('div');
-                connection.className = 'ecosystem-connection';
-                connection.style.left = `${Math.random() * 100}%`;
+                connection.className = 'milestone-connection';
                 connection.style.top = `${Math.random() * 100}%`;
                 connection.style.animationDelay = `${Math.random() * 3}s`;
                 effectsContainer.appendChild(connection);
             }
             
-            // Create Digital Rain
-            const characters = '01ミルザMIRZAエコシステムSBTDeFiDAO';
-            for (let i = 0; i < 30; i++) {
-                const rain = document.createElement('div');
-                rain.className = 'digital-rain';
-                rain.textContent = characters.charAt(Math.floor(Math.random() * characters.length));
-                rain.style.left = `${Math.random() * 100}%`;
-                rain.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                rain.style.animationDelay = `${Math.random() * 5}s`;
-                effectsContainer.appendChild(rain);
+            // Create Future Projection Rays
+            for (let i = 0; i < 6; i++) {
+                const ray = document.createElement('div');
+                ray.className = 'future-ray';
+                ray.style.top = `${Math.random() * 100}%`;
+                ray.style.animationDelay = `${Math.random() * 8}s`;
+                ray.style.animationDuration = `${Math.random() * 4 + 8}s`;
+                effectsContainer.appendChild(ray);
             }
             
-            // Create Energy Waves
-            for (let i = 0; i < 4; i++) {
-                const wave = document.createElement('div');
-                wave.className = 'energy-wave';
-                wave.style.top = `${Math.random() * 100}%`;
-                wave.style.animationDelay = `${Math.random() * 8}s`;
-                wave.style.animationDuration = `${Math.random() * 4 + 8}s`;
-                effectsContainer.appendChild(wave);
+            // Create Quantum Progress Dots
+            for (let i = 0; i < 20; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'quantum-dot';
+                dot.style.left = `${Math.random() * 100}%`;
+                dot.style.top = `${Math.random() * 100}%`;
+                dot.style.animationDelay = `${Math.random() * 4}s`;
+                effectsContainer.appendChild(dot);
+            }
+            
+            // Create Achievement Sparks
+            for (let i = 0; i < 15; i++) {
+                const spark = document.createElement('div');
+                spark.className = 'achievement-spark';
+                spark.style.left = `${Math.random() * 100}%`;
+                spark.style.top = `${Math.random() * 100}%`;
+                spark.style.animationDelay = `${Math.random() * 2}s`;
+                effectsContainer.appendChild(spark);
+            }
+            
+            // Create Growth Rings
+            for (let i = 0; i < 5; i++) {
+                const ring = document.createElement('div');
+                ring.className = 'growth-ring';
+                ring.style.top = `${Math.random() * 100}%`;
+                ring.style.animationDelay = `${Math.random() * 6}s`;
+                effectsContainer.appendChild(ring);
+            }
+            
+            // Create Timeline Markers
+            for (let i = 0; i < 12; i++) {
+                const marker = document.createElement('div');
+                marker.className = 'timeline-marker';
+                marker.style.top = `${Math.random() * 100}%`;
+                marker.style.animationDelay = `${Math.random() * 2}s`;
+                effectsContainer.appendChild(marker);
             }
         }
 
@@ -1208,8 +1304,8 @@
                 }
             });
 
-            // Initialize ecosystem effects and mobile menu
-            createEcosystemEffects();
+            // Initialize roadmap effects and mobile menu
+            createRoadmapEffects();
             setupMobileMenu();
         });
     </script>
