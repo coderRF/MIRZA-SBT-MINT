@@ -31,8 +31,8 @@
             position: relative;
         }
 
-        /* Celebration Effects */
-        .celebration-effects {
+        /* Sophisticated DeFi Effects */
+        .defi-effects {
             position: fixed;
             top: 0;
             left: 0;
@@ -40,104 +40,265 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
+            overflow: hidden;
         }
 
-        /* Bubbles */
-        .bubble {
+        /* Blockchain Network Visualization */
+        .network-node {
             position: absolute;
-            bottom: -100px;
-            background: rgba(0, 240, 240, 0.1);
-            border: 1px solid rgba(0, 240, 240, 0.3);
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
             border-radius: 50%;
-            animation: floatUp linear infinite;
-            opacity: 0.7;
+            animation: nodePulse 4s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(0, 240, 240, 0.8);
         }
 
-        @keyframes floatUp {
+        @keyframes nodePulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 1;
+            }
+        }
+
+        .network-connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: connectionFlow 6s linear infinite;
+            filter: blur(0.5px);
+        }
+
+        @keyframes connectionFlow {
             0% {
-                transform: translateY(0) scale(0.5);
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        /* Financial Data Streams */
+        .data-stream {
+            position: absolute;
+            color: rgba(0, 240, 240, 0.4);
+            font-family: 'Orbitron', monospace;
+            font-size: 12px;
+            animation: streamFlow linear infinite;
+            text-shadow: 0 0 5px rgba(0, 240, 240, 0.6);
+            white-space: nowrap;
+        }
+
+        @keyframes streamFlow {
+            0% {
+                transform: translateY(-100px);
                 opacity: 0;
             }
             10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-100vh) scale(1.2);
-                opacity: 0;
-            }
-        }
-
-        /* Confetti */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 20px;
-            background: var(--accent);
-            opacity: 0.8;
-            animation: confettiFall linear infinite;
-        }
-
-        .confetti:nth-child(odd) {
-            background: #ff6b6b;
-        }
-
-        .confetti:nth-child(even) {
-            background: #4ecdc4;
-        }
-
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
                 opacity: 1;
             }
+            90% {
+                opacity: 0.7;
+            }
             100% {
-                transform: translateY(100vh) rotate(360deg);
+                transform: translateY(100vh);
                 opacity: 0;
             }
         }
 
-        /* Floating Particles */
-        .particle {
+        /* Trading Charts Visualization */
+        .trading-chart {
+            position: absolute;
+            width: 200px;
+            height: 80px;
+            border: 1px solid rgba(0, 240, 240, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            animation: chartFloat 20s linear infinite;
+        }
+
+        .chart-line {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: chartAnimation 3s ease-in-out infinite;
+        }
+
+        @keyframes chartFloat {
+            0% {
+                transform: translateX(-200px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateX(100vw) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes chartAnimation {
+            0%, 100% {
+                transform: scaleX(0.8);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scaleX(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Liquidity Flow */
+        .liquidity-flow {
             position: absolute;
             width: 4px;
             height: 4px;
-            background: var(--accent);
+            background: rgba(0, 240, 240, 0.6);
             border-radius: 50%;
-            animation: particleFloat ease-in-out infinite;
-            opacity: 0.6;
+            animation: liquidityMove 8s linear infinite;
+            box-shadow: 0 0 10px rgba(0, 240, 240, 0.5);
         }
 
-        @keyframes particleFloat {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        /* Sparkles */
-        .sparkle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: #fff;
-            border-radius: 50%;
-            animation: sparkleTwinkle 2s ease-in-out infinite;
-            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
-        }
-
-        @keyframes sparkleTwinkle {
-            0%, 100% {
+        @keyframes liquidityMove {
+            0% {
+                transform: translate(0, 0);
                 opacity: 0;
-                transform: scale(0.5);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(100px, -100px);
+                opacity: 0;
+            }
+        }
+
+        /* Yield Farming Particles */
+        .yield-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #00f0f0, #0080ff);
+            border-radius: 50%;
+            animation: yieldOrbit 15s linear infinite;
+            box-shadow: 0 0 15px rgba(0, 240, 240, 0.7);
+        }
+
+        @keyframes yieldOrbit {
+            0% {
+                transform: rotate(0deg) translateX(150px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(150px) rotate(-360deg);
+            }
+        }
+
+        /* Staking Rings */
+        .staking-ring {
+            position: absolute;
+            border: 1px solid rgba(0, 240, 240, 0.15);
+            border-radius: 50%;
+            animation: ringRotate 25s linear infinite;
+        }
+
+        @keyframes ringRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Price Movement Indicators */
+        .price-indicator {
+            position: absolute;
+            font-family: 'Orbitron', monospace;
+            font-size: 11px;
+            color: #4ecdc4;
+            animation: priceChange 4s ease-in-out infinite;
+            text-shadow: 0 0 8px currentColor;
+        }
+
+        .price-indicator.down {
+            color: #ff6b6b;
+        }
+
+        @keyframes priceChange {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.7;
             }
             50% {
+                transform: translateY(-10px);
                 opacity: 1;
-                transform: scale(1.2);
+            }
+        }
+
+        /* Smart Contract Waves */
+        .contract-wave {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 1px solid rgba(0, 240, 240, 0.2);
+            border-radius: 50%;
+            animation: waveExpand 6s ease-out infinite;
+        }
+
+        @keyframes waveExpand {
+            0% {
+                transform: scale(0.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Token Flow Visualization */
+        .token-flow {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #00f0f0, #0080ff);
+            border-radius: 50%;
+            animation: tokenFlow 12s linear infinite;
+            box-shadow: 0 0 12px rgba(0, 240, 240, 0.6);
+        }
+
+        @keyframes tokenFlow {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(200px, -150px) scale(0.5);
+                opacity: 0;
             }
         }
 
@@ -814,8 +975,8 @@
     </style>
 </head>
 <body>
-    <!-- Celebration Effects -->
-    <div class="celebration-effects" id="celebrationEffects"></div>
+    <!-- Sophisticated DeFi Effects -->
+    <div class="defi-effects" id="defiEffects"></div>
 
     <!-- Side Menu Bar -->
     <div class="side-menu-container" id="sideMenu">
@@ -1009,52 +1170,125 @@
     </footer>
 
     <script>
-        // Create celebration effects
-        function createCelebrationEffects() {
-            const effectsContainer = document.getElementById('celebrationEffects');
+        // Create sophisticated DeFi effects
+        function createDeFiEffects() {
+            const effectsContainer = document.getElementById('defiEffects');
             
-            // Create bubbles
-            for (let i = 0; i < 15; i++) {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                const size = Math.random() * 60 + 20;
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                bubble.style.left = `${Math.random() * 100}%`;
-                bubble.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                bubble.style.animationDelay = `${Math.random() * 5}s`;
-                effectsContainer.appendChild(bubble);
-            }
-            
-            // Create confetti
-            for (let i = 0; i < 20; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = `${Math.random() * 100}%`;
-                confetti.style.animationDuration = `${Math.random() * 5 + 3}s`;
-                confetti.style.animationDelay = `${Math.random() * 2}s`;
-                effectsContainer.appendChild(confetti);
-            }
-            
-            // Create particles
+            // Create Network Nodes
             for (let i = 0; i < 25; i++) {
+                const node = document.createElement('div');
+                node.className = 'network-node';
+                node.style.left = `${Math.random() * 100}%`;
+                node.style.top = `${Math.random() * 100}%`;
+                node.style.animationDelay = `${Math.random() * 4}s`;
+                effectsContainer.appendChild(node);
+            }
+            
+            // Create Network Connections
+            for (let i = 0; i < 15; i++) {
+                const connection = document.createElement('div');
+                connection.className = 'network-connection';
+                connection.style.top = `${Math.random() * 100}%`;
+                connection.style.width = `${Math.random() * 400 + 200}px`;
+                connection.style.animationDelay = `${Math.random() * 6}s`;
+                connection.style.animationDuration = `${Math.random() * 8 + 6}s`;
+                effectsContainer.appendChild(connection);
+            }
+            
+            // Create Data Streams
+            const streamChars = '💰💎📈📊💹MIRZAETHBTCUSDTSOLANADEFI';
+            for (let i = 0; i < 20; i++) {
+                const stream = document.createElement('div');
+                stream.className = 'data-stream';
+                stream.textContent = streamChars.charAt(Math.floor(Math.random() * streamChars.length));
+                stream.style.left = `${Math.random() * 100}%`;
+                stream.style.animationDuration = `${Math.random() * 5 + 4}s`;
+                stream.style.animationDelay = `${Math.random() * 3}s`;
+                effectsContainer.appendChild(stream);
+            }
+            
+            // Create Trading Charts
+            for (let i = 0; i < 8; i++) {
+                const chart = document.createElement('div');
+                chart.className = 'trading-chart';
+                chart.style.top = `${Math.random() * 100}%`;
+                chart.style.animationDelay = `${Math.random() * 10}s`;
+                chart.style.animationDuration = `${Math.random() * 15 + 20}s`;
+                
+                const chartLine = document.createElement('div');
+                chartLine.className = 'chart-line';
+                chart.appendChild(chartLine);
+                
+                effectsContainer.appendChild(chart);
+            }
+            
+            // Create Liquidity Flow
+            for (let i = 0; i < 30; i++) {
+                const flow = document.createElement('div');
+                flow.className = 'liquidity-flow';
+                flow.style.left = `${Math.random() * 100}%`;
+                flow.style.top = `${Math.random() * 100}%`;
+                flow.style.animationDelay = `${Math.random() * 8}s`;
+                flow.style.animationDuration = `${Math.random() * 6 + 8}s`;
+                effectsContainer.appendChild(flow);
+            }
+            
+            // Create Yield Farming Particles
+            for (let i = 0; i < 12; i++) {
                 const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                particle.style.animationDelay = `${Math.random() * 2}s`;
+                particle.className = 'yield-particle';
+                const centerX = Math.random() * 100;
+                const centerY = Math.random() * 100;
+                particle.style.left = `${centerX}%`;
+                particle.style.top = `${centerY}%`;
+                particle.style.animationDuration = `${Math.random() * 10 + 15}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
                 effectsContainer.appendChild(particle);
             }
             
-            // Create sparkles
-            for (let i = 0; i < 30; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = `${Math.random() * 100}%`;
-                sparkle.style.top = `${Math.random() * 100}%`;
-                sparkle.style.animationDelay = `${Math.random() * 3}s`;
-                effectsContainer.appendChild(sparkle);
+            // Create Staking Rings
+            for (let i = 0; i < 6; i++) {
+                const ring = document.createElement('div');
+                ring.className = 'staking-ring';
+                const size = Math.random() * 300 + 150;
+                ring.style.width = `${size}px`;
+                ring.style.height = `${size}px`;
+                ring.style.left = `${Math.random() * 100}%`;
+                ring.style.top = `${Math.random() * 100}%`;
+                ring.style.animationDuration = `${Math.random() * 20 + 25}s`;
+                effectsContainer.appendChild(ring);
+            }
+            
+            // Create Price Indicators
+            for (let i = 0; i < 15; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = Math.random() > 0.5 ? 'price-indicator' : 'price-indicator down';
+                indicator.textContent = Math.random() > 0.5 ? '▲' : '▼';
+                indicator.style.left = `${Math.random() * 100}%`;
+                indicator.style.top = `${Math.random() * 100}%`;
+                indicator.style.animationDelay = `${Math.random() * 4}s`;
+                effectsContainer.appendChild(indicator);
+            }
+            
+            // Create Smart Contract Waves
+            for (let i = 0; i < 5; i++) {
+                const wave = document.createElement('div');
+                wave.className = 'contract-wave';
+                wave.style.left = `${Math.random() * 100}%`;
+                wave.style.top = `${Math.random() * 100}%`;
+                wave.style.animationDelay = `${Math.random() * 6}s`;
+                effectsContainer.appendChild(wave);
+            }
+            
+            // Create Token Flow
+            for (let i = 0; i < 18; i++) {
+                const token = document.createElement('div');
+                token.className = 'token-flow';
+                token.style.left = `${Math.random() * 100}%`;
+                token.style.top = `${Math.random() * 100}%`;
+                token.style.animationDelay = `${Math.random() * 12}s`;
+                token.style.animationDuration = `${Math.random() * 8 + 12}s`;
+                effectsContainer.appendChild(token);
             }
         }
 
@@ -1106,8 +1340,8 @@
                 }
             });
 
-            // Initialize celebration effects and mobile menu
-            createCelebrationEffects();
+            // Initialize DeFi effects and mobile menu
+            createDeFiEffects();
             setupMobileMenu();
         });
     </script>
