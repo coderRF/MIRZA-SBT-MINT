@@ -31,8 +31,8 @@
             position: relative;
         }
 
-        /* Celebration Effects */
-        .celebration-effects {
+        /* New Special Effects */
+        .special-effects {
             position: fixed;
             top: 0;
             left: 0;
@@ -40,104 +40,152 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
+            overflow: hidden;
         }
 
-        /* Bubbles */
-        .bubble {
+        /* Energy Orbs */
+        .energy-orb {
             position: absolute;
-            bottom: -100px;
-            background: rgba(0, 240, 240, 0.1);
-            border: 1px solid rgba(0, 240, 240, 0.3);
             border-radius: 50%;
-            animation: floatUp linear infinite;
-            opacity: 0.7;
+            background: radial-gradient(circle, rgba(0, 240, 240, 0.8), transparent 70%);
+            filter: blur(10px);
+            animation: orbFloat 15s ease-in-out infinite;
         }
 
-        @keyframes floatUp {
+        @keyframes orbFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(100px, -50px) scale(1.2);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(-80px, 80px) scale(0.8);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translate(-100px, -80px) scale(1.1);
+                opacity: 0.7;
+            }
+        }
+
+        /* Digital Rain Effect */
+        .digital-rain {
+            position: absolute;
+            color: rgba(0, 240, 240, 0.3);
+            font-family: 'Orbitron', monospace;
+            font-size: 14px;
+            animation: rainFall linear infinite;
+            text-shadow: 0 0 5px rgba(0, 240, 240, 0.5);
+        }
+
+        @keyframes rainFall {
             0% {
-                transform: translateY(0) scale(0.5);
+                transform: translateY(-100px);
                 opacity: 0;
             }
             10% {
-                opacity: 0.7;
+                opacity: 1;
             }
             90% {
-                opacity: 0.5;
+                opacity: 0.7;
             }
             100% {
-                transform: translateY(-100vh) scale(1.2);
+                transform: translateY(100vh);
                 opacity: 0;
             }
         }
 
-        /* Confetti */
-        .confetti {
+        /* Pulsing Rings */
+        .pulse-ring {
             position: absolute;
-            width: 10px;
-            height: 20px;
-            background: var(--accent);
-            opacity: 0.8;
-            animation: confettiFall linear infinite;
+            border: 2px solid rgba(0, 240, 240, 0.3);
+            border-radius: 50%;
+            animation: pulseExpand 4s ease-out infinite;
         }
 
-        .confetti:nth-child(odd) {
-            background: #ff6b6b;
-        }
-
-        .confetti:nth-child(even) {
-            background: #4ecdc4;
-        }
-
-        @keyframes confettiFall {
+        @keyframes pulseExpand {
             0% {
-                transform: translateY(-100px) rotate(0deg);
+                transform: scale(0.1);
                 opacity: 1;
             }
             100% {
-                transform: translateY(100vh) rotate(360deg);
+                transform: scale(3);
                 opacity: 0;
             }
         }
 
         /* Floating Particles */
-        .particle {
+        .floating-particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--accent);
+            width: 6px;
+            height: 6px;
+            background: rgba(0, 240, 240, 0.6);
             border-radius: 50%;
-            animation: particleFloat ease-in-out infinite;
-            opacity: 0.6;
+            animation: particleFloat 8s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(0, 240, 240, 0.8);
         }
 
         @keyframes particleFloat {
             0%, 100% {
-                transform: translateY(0px);
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(20px, -30px) rotate(90deg);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translate(-15px, 25px) rotate(180deg);
+            }
+            75% {
+                transform: translate(25px, 15px) rotate(270deg);
             }
         }
 
-        /* Sparkles */
-        .sparkle {
+        /* Glowing Stars */
+        .glowing-star {
             position: absolute;
             width: 3px;
             height: 3px;
-            background: #fff;
+            background: #ffffff;
             border-radius: 50%;
-            animation: sparkleTwinkle 2s ease-in-out infinite;
-            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: starTwinkle 3s ease-in-out infinite;
+            box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.8);
         }
 
-        @keyframes sparkleTwinkle {
+        @keyframes starTwinkle {
             0%, 100% {
-                opacity: 0;
-                transform: scale(0.5);
+                opacity: 0.2;
+                transform: scale(0.8);
             }
             50% {
                 opacity: 1;
                 transform: scale(1.2);
+            }
+        }
+
+        /* Energy Waves */
+        .energy-wave {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 240, 0.4), transparent);
+            animation: waveMove 6s linear infinite;
+            filter: blur(1px);
+        }
+
+        @keyframes waveMove {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
             }
         }
 
@@ -1079,8 +1127,8 @@
     </style>
 </head>
 <body>
-    <!-- Celebration Effects -->
-    <div class="celebration-effects" id="celebrationEffects"></div>
+    <!-- New Special Effects -->
+    <div class="special-effects" id="specialEffects"></div>
 
     <!-- Side Menu Bar -->
     <div class="side-menu-container" id="sideMenu">
@@ -1297,52 +1345,78 @@
     </footer>
 
     <script>
-        // Create celebration effects
-        function createCelebrationEffects() {
-            const effectsContainer = document.getElementById('celebrationEffects');
+        // Create new special effects
+        function createSpecialEffects() {
+            const effectsContainer = document.getElementById('specialEffects');
             
-            // Create bubbles
-            for (let i = 0; i < 15; i++) {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                const size = Math.random() * 60 + 20;
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                bubble.style.left = `${Math.random() * 100}%`;
-                bubble.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                bubble.style.animationDelay = `${Math.random() * 5}s`;
-                effectsContainer.appendChild(bubble);
+            // Create Energy Orbs
+            for (let i = 0; i < 8; i++) {
+                const orb = document.createElement('div');
+                orb.className = 'energy-orb';
+                const size = Math.random() * 150 + 50;
+                orb.style.width = `${size}px`;
+                orb.style.height = `${size}px`;
+                orb.style.left = `${Math.random() * 100}%`;
+                orb.style.top = `${Math.random() * 100}%`;
+                orb.style.animationDelay = `${Math.random() * 5}s`;
+                orb.style.animationDuration = `${Math.random() * 10 + 15}s`;
+                effectsContainer.appendChild(orb);
             }
             
-            // Create confetti
-            for (let i = 0; i < 20; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = `${Math.random() * 100}%`;
-                confetti.style.animationDuration = `${Math.random() * 5 + 3}s`;
-                confetti.style.animationDelay = `${Math.random() * 2}s`;
-                effectsContainer.appendChild(confetti);
+            // Create Digital Rain
+            const characters = '01ミルザMIRZAエコシステム';
+            for (let i = 0; i < 40; i++) {
+                const rain = document.createElement('div');
+                rain.className = 'digital-rain';
+                rain.textContent = characters.charAt(Math.floor(Math.random() * characters.length));
+                rain.style.left = `${Math.random() * 100}%`;
+                rain.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                rain.style.animationDelay = `${Math.random() * 5}s`;
+                effectsContainer.appendChild(rain);
             }
             
-            // Create particles
+            // Create Pulsing Rings
+            for (let i = 0; i < 5; i++) {
+                const ring = document.createElement('div');
+                ring.className = 'pulse-ring';
+                const size = Math.random() * 100 + 50;
+                ring.style.width = `${size}px`;
+                ring.style.height = `${size}px`;
+                ring.style.left = `${Math.random() * 100}%`;
+                ring.style.top = `${Math.random() * 100}%`;
+                ring.style.animationDelay = `${Math.random() * 2}s`;
+                effectsContainer.appendChild(ring);
+            }
+            
+            // Create Floating Particles
             for (let i = 0; i < 25; i++) {
                 const particle = document.createElement('div');
-                particle.className = 'particle';
+                particle.className = 'floating-particle';
                 particle.style.left = `${Math.random() * 100}%`;
                 particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                particle.style.animationDelay = `${Math.random() * 2}s`;
+                particle.style.animationDelay = `${Math.random() * 8}s`;
+                particle.style.animationDuration = `${Math.random() * 5 + 8}s`;
                 effectsContainer.appendChild(particle);
             }
             
-            // Create sparkles
-            for (let i = 0; i < 30; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = `${Math.random() * 100}%`;
-                sparkle.style.top = `${Math.random() * 100}%`;
-                sparkle.style.animationDelay = `${Math.random() * 3}s`;
-                effectsContainer.appendChild(sparkle);
+            // Create Glowing Stars
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'glowing-star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                effectsContainer.appendChild(star);
+            }
+            
+            // Create Energy Waves
+            for (let i = 0; i < 3; i++) {
+                const wave = document.createElement('div');
+                wave.className = 'energy-wave';
+                wave.style.top = `${Math.random() * 100}%`;
+                wave.style.animationDelay = `${Math.random() * 6}s`;
+                wave.style.animationDuration = `${Math.random() * 3 + 6}s`;
+                effectsContainer.appendChild(wave);
             }
         }
 
@@ -1416,8 +1490,8 @@
                 }
             });
 
-            // Initialize celebration effects and mobile menu
-            createCelebrationEffects();
+            // Initialize new special effects and mobile menu
+            createSpecialEffects();
             setupMobileMenu();
             setupSearch();
         });
